@@ -5,6 +5,9 @@ import sys
 
 # Vars
 ORG = 'devopshq'
+# Testing only, skip limit
+#token = ''
+#headers = {'Authorization': 'token ' + token}
 GIT_API_URL = 'https://api.github.com'
 
 
