@@ -34,6 +34,7 @@ jobs:
           pytest
 
   build_and_push_docker:
+    needs: python_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
