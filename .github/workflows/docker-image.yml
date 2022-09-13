@@ -20,7 +20,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            docker.io/${{ secrets.DOCKER_LOGIN }}
+            docker.io/ingtar/devopshqissues
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
