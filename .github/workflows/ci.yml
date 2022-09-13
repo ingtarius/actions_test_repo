@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: ghe-actions/dockerfile-validator@v1
         with:
-          dockerfile: Dockerfile
           lint: hadolint
   python_test:
     runs-on: ubuntu-latest
