@@ -1,4 +1,6 @@
 import requests
+import json
+
 data_str = """{
     "id": 1296269,
     "node_id": "MDEwOlJlcG9zaXRvcnkxMjk2MjY5",
