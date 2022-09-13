@@ -6,12 +6,6 @@ on:
 #    branches: [ "master", "develop" ]
 
 jobs:
-  docker_file_test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ghe-actions/dockerfile-validator@v1
-        with:
-          lint: hadolint
   python_test:
     runs-on: ubuntu-latest
     strategy:
@@ -41,7 +35,7 @@ jobs:
           pytest
 
   build_and_push_docker:
-    needs: ["python_test", "docker_file_test"]
+    needs: ["python_test"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
