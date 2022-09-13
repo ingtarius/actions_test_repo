@@ -6,6 +6,7 @@ import requests_mock
 
 from src.issues import *
 
+
 @pytest.fixture
 def mock_get_org():
     with requests_mock.Mocker() as requests_mocker:
@@ -28,9 +29,9 @@ def mock_get_issue():
         yield
 
 
-
 def test_get_all_repos_org(mock_get_org):
     get_all_repos_org('test_org')
+
 
 def test_get_issues_from_url(mock_get_issue):
     get_issues_from_url('https://mock-test.example.com/test_url')
