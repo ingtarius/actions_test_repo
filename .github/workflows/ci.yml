@@ -6,6 +6,13 @@ on:
 #    branches: [ "master", "develop" ]
 
 jobs:
+  docker_file_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ghe-actions/dockerfile-validator@v1
+        with:
+          dockerfile: 'Dockerfile'
+          lint: 'hadolint'
   python_test:
     runs-on: ubuntu-latest
     strategy:
