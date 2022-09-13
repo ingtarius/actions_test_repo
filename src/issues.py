@@ -35,7 +35,8 @@ def get_issues_from_url(url):
         return r.json()
 
 
-for repo in get_all_repos_org(ORG):
-    print("%s:" % (repo['name']))
-    for issue in get_issues_from_url(repo['url']):
-        print('#%s %s' % (issue['number'], issue['title']))
+if __name__ == "__main__":
+    for repo in get_all_repos_org(ORG):
+        print("%s:" % (repo['name']))
+        for issue in get_issues_from_url(repo['url']):
+            print('#%s %s' % (issue['number'], issue['title']))

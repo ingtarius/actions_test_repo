@@ -12,7 +12,7 @@ def mock_get_org():
         requests_mocker.get(
             "https://api.github.com/orgs/test_org/repos",
             status_code=200,
-            json={"the_result": "was successful!"},  # Optional. The value when .json() is called on the response.
+            json={"the_result": "was successful!"},
         )
         yield
 
@@ -23,7 +23,7 @@ def mock_get_issue():
         requests_mocker.get(
             "https://mock-test.example.com/test_url/issues",
             status_code=200,
-            json={"the_result": "was successful!"},  # Optional. The value when .json() is called on the response.
+            json={"the_result": "was successful!"},
         )
         yield
 
