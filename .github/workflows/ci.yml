@@ -1,15 +1,12 @@
 name: Test flow
-#on:
-#  push:
-#    branches: [ "master", "develop" ]
-#  pull_request:
-#    branches: [ "master", "develop" ]
+on:
+  push:
+    branches: [ "master", "develop" ]
+  pull_request:
+    branches: [ "master", "develop" ]
 
 jobs:
   python_test:
-    on:
-     pull_request:
-       branches: [ "master", "develop" ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,9 +33,6 @@ jobs:
           pytest
 
   build_and_push_docker:
-    on:
-      push:
-        branches: [ "master", "develop" ]
     needs: python_test
     runs-on: ubuntu-latest
     steps:
