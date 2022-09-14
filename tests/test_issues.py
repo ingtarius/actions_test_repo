@@ -20,4 +20,3 @@ def mock_get():
 
 def test_get_data(mock_get):
     get_data('https://mock-test.example.com/test_url/issues')
-
