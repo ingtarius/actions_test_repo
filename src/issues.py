@@ -11,32 +11,22 @@ ORG = 'devopshq'
 GIT_API_URL = 'https://api.github.com'
 
 
-def get_all_repos_org(org):
-    """ Get all repos from specific org in github """
+def get_data(url):
+    """ Collect data from remote api """
     """ https://docs.github.com/en/rest/repos/repos#list-organization-repositories """
-    full_url = GIT_API_URL + '/orgs/' + org + '/repos'
-    r = requests.get(full_url)
-    if r.status_code != 200:
-        print("Failed. Responce code is %s while get all repos!" % (r.status_code))
-        sys.exit()
-    else:
-        return r.json()
-
-
-def get_issues_from_url(url):
-    """ Get all issues from github url """
     """ https://docs.github.com/en/rest/issues/issues#list-repository-issues """
-    full_url = url + '/issues'
-    r = requests.get(full_url)
+    r = requests.get(url)
     if r.status_code != 200:
-        print("Failed. Responce code is %s while get issue from repo!" % (r.status_code))
+        print("Failed. Responce code is %s while get url %s!" % (r.status_code, url))
         sys.exit()
     else:
         return r.json()
 
 
 if __name__ == "__main__":
-    for repo in get_all_repos_org(ORG):
+    repos_list_url = GIT_API_URL + '/orgs/' + ORG + '/repos'
+    for repo in get_data(repos_list_url):
         print("%s:" % (repo['name']))
-        for issue in get_issues_from_url(repo['url']):
+        issue_url = repo['url'] + '/issues'
+        for issue in get_data(issue_url):
             print('#%s %s' % (issue['number'], issue['title']))

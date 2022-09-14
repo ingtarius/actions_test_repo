@@ -8,18 +8,7 @@ from src.issues import *
 
 
 @pytest.fixture
-def mock_get_org():
-    with requests_mock.Mocker() as requests_mocker:
-        requests_mocker.get(
-            "https://api.github.com/orgs/test_org/repos",
-            status_code=200,
-            json={"the_result": "was successful!"},
-        )
-        yield
-
-
-@pytest.fixture
-def mock_get_issue():
+def mock_get():
     with requests_mock.Mocker() as requests_mocker:
         requests_mocker.get(
             "https://mock-test.example.com/test_url/issues",
@@ -29,9 +18,6 @@ def mock_get_issue():
         yield
 
 
-def test_get_all_repos_org(mock_get_org):
-    get_all_repos_org('test_org')
+def test_get_data(mock_get):
+    get_data('https://mock-test.example.com/test_url/issues')
 
-
-def test_get_issues_from_url(mock_get_issue):
-    get_issues_from_url('https://mock-test.example.com/test_url')
